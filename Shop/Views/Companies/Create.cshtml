@@ -1,0 +1,41 @@
+﻿@model Shop.Models.Company
+
+@{
+    ViewData["Title"] = "CreateCompany";
+}
+    <div class="container-background">
+        <h1>Create Company</h1>
+
+        <h4>Company</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="CompanyName" class="control-label"></label>
+                        <input asp-for="CompanyName" class="form-control" />
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Country" class="control-label"></label>
+                        <select asp-for="Country" asp-items="@Html.GetEnumSelectList<Country>()" class="form-control"></select>
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-hand-point-left"></i> Back to List</a>
+        </div>
+    </div>
+    <div class="lds-ripple-wrapper">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

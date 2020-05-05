@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Shop.Models.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1><i class="fas fa-shopping-cart"></i> Cart</h1>
+@if (ViewBag.cart == null)
+{
+    <p>Your cart is empty</p>
+    <div class="lds-ripple-wrapper">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+}
+else
+{
+    <table class="table container-background">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CartQuantity)
+                </th>
+                <th>
+                    Products total
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{decimal total = 0; }
+            @foreach (var item in ViewBag.cart)
+            {
+                total += item.product.Price * item.CartQuantity;
+                <tr>
+                    <td><a asp-controller="cart" asp-action="remove" asp-route-id="@item.product.Id">Remove</a></td>
+                    <td>
+                        @item.product.Name
+                    </td>
+                    <td>
+                        @item.product.Price
+                    </td>
+                    <td>
+                        @item.CartQuantity
+                    </td>
+                    <td>
+                        @(item.CartQuantity * item.product.Price)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5" align="right">Total: </td>
+                <td>@total</td>
+            </tr>
+            <tr>
+                <td><a class="btn btn-secondary" asp-controller="Products" asp-action="Index"><i class="fas fa-hand-point-left"></i> Back to products</a></td>
+            </tr>
+            <tr>
+                <td><a class="btn btn-success" asp-controller="cart" asp-action="ConfirmAddress">Next <i class="fas fa-chevron-right"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="lds-ripple-wrapper">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+}

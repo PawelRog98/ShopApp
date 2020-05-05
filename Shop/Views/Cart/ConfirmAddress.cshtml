@@ -1,0 +1,66 @@
+﻿@model Shop.Areas.Identity.Data.ShopUser
+
+@{
+    ViewData["Title"] = "ConfirmAddress";
+}
+
+<h1>Confirm address</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="ConfirmAddress">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserName" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <a class="btn btn-success" asp-controller="cart" asp-action="HasBeenBought"><i class="fas fa-credit-card"></i> Buy now</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Return to cart</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

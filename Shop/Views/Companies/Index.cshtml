@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Shop.Models.Company>
+
+@{
+    ViewData["Title"] = "IndexCompany";
+}
+    <button onclick="topFunction()" id="scroll-up-button" title="Up"><i class='fas fa-arrow-up'></i></button>
+    <div class="container-background">
+        <h1>IndexCompany</h1>
+
+        <p>
+            <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
+                            <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pen"></i> Edit</a>
+                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info"></i> Details</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash-alt"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+    <div class="lds-ripple-wrapper">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>

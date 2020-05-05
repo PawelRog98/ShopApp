@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Shop.Models.Item>
+
+@{
+    ViewData["Title"] = "View";
+}
+    <button onclick="topFunction()" id="scroll-up-button" title="Up"><i class='fas fa-arrow-up'></i></button>
+<h1>View</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product name
+            </th>
+            <th>
+                Price per one
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartQuantity)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="lds-ripple-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+</div>
